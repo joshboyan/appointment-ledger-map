@@ -6,6 +6,17 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Button, Panel, FormGroup, ControlLabel,
          FormControl, HelpBlock, Radio, Checkbox } from 'react-bootstrap';
 import MdAddCircleOutline from 'react-icons/lib/md/add-circle-outline';
+import TimePicker from 'rc-time-picker';
+import 'rc-time-picker/assets/index.css';
+import './AppointmentForm.css';
+
+const format = 'h:mm a';
+
+const now = moment().hour(0).minute(0);
+
+function onChange(value) {
+  console.log(value && value.format(format));
+}
 
 class AppointmentForm extends Component {
   constructor (props) {
@@ -25,9 +36,7 @@ class AppointmentForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-  }
-
-  
+  }  
 
   render() {
     const style = {
@@ -56,10 +65,18 @@ class AppointmentForm extends Component {
               label="Appointment Title"
               placeholder="Appointment Title"
             />
+            <p>Date and Time</p>
             <DatePicker
-              bsStyle={style}
               selected={this.state.startDate}
               onChange={this.handleChange}
+            />
+            <TimePicker
+              showSecond={false}
+              defaultValue={now}
+              className="xxx"
+              onChange={onChange}
+              format={format}
+              use12Hours
             />
             <FieldGroup
               id="formControlsText"
@@ -75,7 +92,7 @@ class AppointmentForm extends Component {
               id="formControlsFile"
               type="file"
               label="Attachments"
-              help="Add any attachments or relevant materials here(up to 3mb)"
+              help="(3mb max file size)"
             />
             <Panel header="Directions" bsStyle="danger">
               <FieldGroup
@@ -107,22 +124,22 @@ class AppointmentForm extends Component {
               <FormGroup>
                 <p>Notify Me:</p>
               <Checkbox inline>
-                    5 minutes
-                  </Checkbox>
-                  {' '}
-                  <Checkbox inline>
-                    15 minutes
-                  </Checkbox>
-                  {' '}
-                  <Checkbox inline>
                     30 minutes
                   </Checkbox>
                   {' '}
                   <Checkbox inline>
                     1 hour
                   </Checkbox>
-                  {' '}<Checkbox inline>
+                  {' '}
+                  <Checkbox inline>
                     2 hours
+                  </Checkbox>
+                  {' '}
+                  <Checkbox inline>
+                    3 hours
+                  </Checkbox>
+                  {' '}<Checkbox inline>
+                    24 hours
                   </Checkbox>
                   <p>Before my Appointment</p>
               </FormGroup>
