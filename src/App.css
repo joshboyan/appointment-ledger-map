@@ -2,7 +2,7 @@
   text-align: center;
   font-size: 18px; }
 
-.btn-primary {
+.btn-primary:first-of-type {
   font-size: 24px;
   padding-top: 20px; }
 
