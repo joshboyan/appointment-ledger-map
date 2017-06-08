@@ -11,8 +11,11 @@ class AppointmentForm extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      open: false
+      open: false,
+      appointmentTitle: ''
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
   }
 
   handleChange(date) {
@@ -20,25 +23,29 @@ class AppointmentForm extends Component {
       startDate: date
     });
   }
-
+  handleTitleChange(event) {
+    this.setState({appointmentTitle: event.target.value});
+  }
   handleSubmit(e) {
+    let newAppointment = {
+      title: this.state.appointmentTitle
+    }
     e.preventDefault();
+    this.props.addAppointment(newAppointment);
   } 
 
   render() {
-    const style = {
-      width: '100%'
-    }
     return (
       <div>
-        <Button bsStyle="primary" style={style} onClick={ ()=> this.setState({ open: !this.state.open })}>
+        <Button bsStyle="primary" onClick={ ()=> this.setState({ open: !this.state.open })}>
           <p><MdAddCircleOutline /> Add Appointment</p>
         </Button>
         <Panel bsStyle='primary' collapsible expanded={this.state.open}>          
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <FormGroup controlId="appointmentTitle">
               <ControlLabel>Appointment Title</ControlLabel>
-              <FormControl type="text" placeholder="Appointment Title"/>
+              <FormControl type="text" placeholder="Appointment Title" value={this.state.appointmentTitle}
+              onChange={this.handleTitleChange}/>
             </FormGroup>    
             <p>Date and Time</p>
             <AppointmentFormDatePicker />

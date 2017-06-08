@@ -7,23 +7,24 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      appointments: []
+      appointments: [{title:'first appointment'}]
     };
+    this.updateAppointments = this.updateAppointments.bind(this);
   }
 
-  addAppointment(newAppointment) {
-    let newAppointmentList = this.state.appointments;
+  updateAppointments(newAppointment) {
+    var newAppointmentList = this.state.appointments;
     newAppointmentList.push(newAppointment);
-    this.setState= {
-      appointments: newAppointmentList
-    };
+    this.setState({
+      appointments: newAppointmentList        
+    });  
+    console.log(this.state.appointments);  
   }
 
   render() {
     return (
       <div className="App">
-        <AppointmentForm />
-        
+        <AppointmentForm addAppointment = {this.updateAppointments} />        
       </div>
     );
   }
