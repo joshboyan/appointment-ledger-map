@@ -107,7 +107,10 @@ class AppointmentForm extends Component {
           title: false,
           date: false,
           time: false
-        }
+        },
+        appointmentTitle: '',
+        appointmentDescription: '',
+        appointmentDestination: ''
       }, function() {
         this.props.addAppointment(newAppointment);
       });
@@ -134,6 +137,7 @@ class AppointmentForm extends Component {
               <FormControl 
                 type="text" 
                 placeholder="Appointment Title"
+                value={this.state.appointmentTitle}
                 onChange={this.handleTitleChange}
                 className={this.state.formError.title ? 'error' : null} />
             </FormGroup>    
@@ -147,13 +151,15 @@ class AppointmentForm extends Component {
             <FormGroup controlId="destination">
             <ControlLabel>Destination</ControlLabel>
               <AppointmentFormDestination 
-                updateDestination={this.handleDestinationChange} />
+                updateDestination={this.handleDestinationChange}
+                address={this.state.appointmentDestination} />
             </FormGroup>
             <FormGroup controlId="formControlsTextarea">
               <ControlLabel>Description and Notes</ControlLabel>
               <FormControl 
                 componentClass="textarea" 
                 placeholder="Description and Notes" 
+                value={this.state.appointmentDescription}
                 onChange={this.handleDescriptionChange} />
             </FormGroup>
             <FormGroup controlId="formControlsFile">
