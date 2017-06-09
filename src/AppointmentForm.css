@@ -63,7 +63,8 @@ span {
   padding: .85rem 3.25rem 1rem .65rem;
 }  
 
-.rc-time-picker-input {
+.rc-time-picker-input,
+#PlacesAutocomplete__root input {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -78,12 +79,12 @@ span {
 .rc-time-picker-panel-input {
   font-size: 18px;
 }
-.rc-time-picker-input:focus {
+.rc-time-picker-input:focus,
+#PlacesAutocomplete__root input:focus {
   border-color: #66afe9;
   outline: 0;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
 }
-
 .rc-time-picker-panel-select li {
   font-size: 24px;
   padding: 12px;

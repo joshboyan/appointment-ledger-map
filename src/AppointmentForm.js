@@ -5,6 +5,7 @@ import { Button, Panel, FormGroup, ControlLabel,
 import MdAddCircleOutline from 'react-icons/lib/md/add-circle-outline';
 import AppointmentFormDatePicker from './AppointmentFormDatePicker';
 import AppointmentFormTimePicker from './AppointmentFormTimePicker';
+import AppointmentFormDestination from './AppointmentFormDestination';
 import './AppointmentForm.css';
 
 class AppointmentForm extends Component {
@@ -20,11 +21,13 @@ class AppointmentForm extends Component {
       appointmentTitle: '',
       appointmentDate: '',
       appointmentTime: '',
+      appointmentDestination:'',
       appointmentDescription: ''
     };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.handleDestinationChange = this.handleDestinationChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -46,6 +49,12 @@ class AppointmentForm extends Component {
       appointmentTime: value
     });
   }
+  
+  handleDestinationChange(address) {
+    this.setState({
+      appointmentDestination: address
+    });
+  }
 
   handleDescriptionChange(e) {
     this.setState({
@@ -58,6 +67,7 @@ class AppointmentForm extends Component {
       appointmentTitle: this.state.appointmentTitle,
       appointmentDate: this.state.appointmentDate,
       appointmentTime: this.state.appointmentTime,
+      appointmentDestination: this.state.appointmentDestination,
       appointmentDescription: this.state.appointmentDescription
     }
     e.preventDefault();
@@ -135,17 +145,16 @@ class AppointmentForm extends Component {
               updateTime={this.handleTimeChange}
               errorStatus={this.state.formError.time} />
             <FormGroup controlId="destination">
-              <ControlLabel>Destination</ControlLabel>
-              <FormControl 
-                type="text" 
-                placeholder="Destination" />
+            <ControlLabel>Destination</ControlLabel>
+              <AppointmentFormDestination 
+                updateDestination={this.handleDestinationChange} />
             </FormGroup>
             <FormGroup controlId="formControlsTextarea">
               <ControlLabel>Description and Notes</ControlLabel>
               <FormControl 
                 componentClass="textarea" 
                 placeholder="Description and Notes" 
-                onChange={this.handleDescriptionChange}/>
+                onChange={this.handleDescriptionChange} />
             </FormGroup>
             <FormGroup controlId="formControlsFile">
               <ControlLabel>Add File</ControlLabel>
