@@ -4,6 +4,9 @@ button {
 p:first-of-type {
   font-weight: 700;
 }
+span {
+  color: tomato;
+}
 .react-datepicker__input-container,
 .rc-time-picker {
   float: left;

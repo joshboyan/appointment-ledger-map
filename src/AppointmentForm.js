@@ -12,23 +12,27 @@ class AppointmentForm extends Component {
     super(props)
     this.state = {
       open: false,
-      appointmentTitle: ''
+      appointmentTitle: '',
+      appointmentDate: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
   }
-
-  handleChange(date) {
+  handleTitleChange(e) {
     this.setState({
-      startDate: date
+      appointmentTitle: e.target.value
     });
   }
-  handleTitleChange(event) {
-    this.setState({appointmentTitle: event.target.value});
+  handleDateChange(date) {
+    this.setState({
+      appointmentDate: date
+    });
   }
   handleSubmit(e) {
     let newAppointment = {
-      title: this.state.appointmentTitle
+      title: this.state.appointmentTitle,
+      appointmentDate: this.state.appointmentDate
     }
     e.preventDefault();
     this.props.addAppointment(newAppointment);
@@ -43,12 +47,12 @@ class AppointmentForm extends Component {
         <Panel bsStyle='primary' collapsible expanded={this.state.open}>          
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId="appointmentTitle">
-              <ControlLabel>Appointment Title</ControlLabel>
+              <ControlLabel><span>* </span>Appointment Title</ControlLabel>
               <FormControl type="text" placeholder="Appointment Title" value={this.state.appointmentTitle}
               onChange={this.handleTitleChange}/>
             </FormGroup>    
-            <p>Date and Time</p>
-            <AppointmentFormDatePicker />
+            <p><span>* </span>Date and Time</p>
+            <AppointmentFormDatePicker updateDateChange={this.handleDateChange}/>
             <AppointmentFormTimePicker />
             <FormGroup controlId="destination">
               <ControlLabel>Destination</ControlLabel>

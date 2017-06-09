@@ -13,12 +13,13 @@ class App extends Component {
   }
 
   updateAppointments(newAppointment) {
-    var newAppointmentList = this.state.appointments;
+    var newAppointmentList = [...this.state.appointments];
     newAppointmentList.push(newAppointment);
     this.setState({
       appointments: newAppointmentList        
-    });  
-    console.log(this.state.appointments);  
+    }, function() {
+      console.log(this.state.appointments);
+    });    
   }
 
   render() {

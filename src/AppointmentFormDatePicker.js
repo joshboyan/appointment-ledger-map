@@ -12,11 +12,9 @@ class AppointmentFormDatePicker extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-
   handleChange(date) {
-    this.setState({
-      startDate: date
-    });
+    console.log(date);
+    this.props.updateDateChange(date);
   }
   render(){
     return (
