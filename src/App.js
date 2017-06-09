@@ -7,7 +7,7 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      appointments: [{title:'first appointment'}]
+      appointments: []
     };
     this.updateAppointments = this.updateAppointments.bind(this);
   }

@@ -13,11 +13,13 @@ class AppointmentForm extends Component {
     this.state = {
       open: false,
       appointmentTitle: '',
-      appointmentDate: ''
+      appointmentDate: '',
+      appointmentTime: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
   }
   handleTitleChange(e) {
     this.setState({
@@ -29,15 +31,20 @@ class AppointmentForm extends Component {
       appointmentDate: date
     });
   }
+  handleTimeChange(value) {
+    this.setState({
+      appointmentTime: value
+    });
+  }
   handleSubmit(e) {
     let newAppointment = {
-      title: this.state.appointmentTitle,
-      appointmentDate: this.state.appointmentDate
+      appointmentTitle: this.state.appointmentTitle,
+      appointmentDate: this.state.appointmentDate,
+      appointmentTime: this.state.appointmentTime
     }
     e.preventDefault();
     this.props.addAppointment(newAppointment);
-  } 
-
+  }
   render() {
     return (
       <div>
@@ -52,8 +59,8 @@ class AppointmentForm extends Component {
               onChange={this.handleTitleChange}/>
             </FormGroup>    
             <p><span>* </span>Date and Time</p>
-            <AppointmentFormDatePicker updateDateChange={this.handleDateChange}/>
-            <AppointmentFormTimePicker />
+            <AppointmentFormDatePicker updateDate={this.handleDateChange}/>
+            <AppointmentFormTimePicker updateTime={this.handleTimeChange}/>
             <FormGroup controlId="destination">
               <ControlLabel>Destination</ControlLabel>
               <FormControl type="text" placeholder="Destination"/>
