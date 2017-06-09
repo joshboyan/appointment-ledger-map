@@ -19,12 +19,14 @@ class AppointmentForm extends Component {
       },
       appointmentTitle: '',
       appointmentDate: '',
-      appointmentTime: ''
+      appointmentTime: '',
+      appointmentDescription: ''
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleTitleChange(e) {
@@ -45,11 +47,18 @@ class AppointmentForm extends Component {
     });
   }
 
+  handleDescriptionChange(e) {
+    this.setState({
+      appointmentDescription: e.target.value
+    });
+  }
+
   handleSubmit(e) {
     let newAppointment = {
       appointmentTitle: this.state.appointmentTitle,
       appointmentDate: this.state.appointmentDate,
-      appointmentTime: this.state.appointmentTime
+      appointmentTime: this.state.appointmentTime,
+      appointmentDescription: this.state.appointmentDescription
     }
     e.preventDefault();
     if (newAppointment.appointmentTitle === '') {
@@ -98,13 +107,20 @@ class AppointmentForm extends Component {
   render() {
     return (
       <div>
-        <Button bsStyle="primary" onClick={ ()=> this.setState({ open: !this.state.open })}>
+        <Button 
+          bsStyle="primary" 
+          onClick={ ()=> this.setState({ open: !this.state.open })}>
           <p><MdAddCircleOutline /> Add Appointment</p>
         </Button>
-        <Panel bsStyle='primary' collapsible expanded={this.state.open}>          
+        <Panel 
+          bsStyle='primary' 
+          expanded={this.state.open}
+          collapsible>          
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId="appointmentTitle">
-              <ControlLabel><span>* </span>Appointment Title</ControlLabel>
+              <ControlLabel>
+                <span>* </span>Appointment Title
+              </ControlLabel>
               <FormControl 
                 type="text" 
                 placeholder="Appointment Title"
@@ -120,24 +136,31 @@ class AppointmentForm extends Component {
               errorStatus={this.state.formError.time} />
             <FormGroup controlId="destination">
               <ControlLabel>Destination</ControlLabel>
-              <FormControl type="text" placeholder="Destination"/>
+              <FormControl 
+                type="text" 
+                placeholder="Destination" />
             </FormGroup>
             <FormGroup controlId="formControlsTextarea">
               <ControlLabel>Description and Notes</ControlLabel>
-              <FormControl componentClass="textarea" placeholder="Description and Notes" />
+              <FormControl 
+                componentClass="textarea" 
+                placeholder="Description and Notes" 
+                onChange={this.handleDescriptionChange}/>
             </FormGroup>
             <FormGroup controlId="formControlsFile">
               <ControlLabel>Add File</ControlLabel>
-              <FormControl type="file" label="Attachments" />
+              <FormControl 
+                type="file" 
+                label="Attachments" />
               <HelpBlock>(3mb max file size)</HelpBlock>
             </FormGroup>
-            <Button type="submit" bsStyle="primary">
+            <Button 
+              type="submit" 
+              bsStyle="primary">
               Add Appointment
             </Button> 
           </form>          
-        </ Panel>
-        
-        
+        </ Panel>       
       </div>
     );
   }
