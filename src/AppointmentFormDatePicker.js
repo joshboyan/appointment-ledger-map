@@ -8,7 +8,7 @@ class AppointmentFormDatePicker extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      startDate: moment()
+      startDate: moment(),
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -21,6 +21,7 @@ class AppointmentFormDatePicker extends Component {
       <DatePicker
         selected={this.state.startDate}
         onChange={this.handleChange}
+        className={this.props.errorStatus ? 'error' : null}
       />
     )
   }

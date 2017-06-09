@@ -12,6 +12,11 @@ class AppointmentForm extends Component {
     super(props)
     this.state = {
       open: false,
+      formError: {
+        title: false,
+        date: false,
+        time: false
+      },
       appointmentTitle: '',
       appointmentDate: '',
       appointmentTime: ''
@@ -43,7 +48,47 @@ class AppointmentForm extends Component {
       appointmentTime: this.state.appointmentTime
     }
     e.preventDefault();
-    this.props.addAppointment(newAppointment);
+    if (newAppointment.appointmentTitle === '') {
+      this.setState({
+        formError:{
+          title: true,
+          date: false,
+          time: false
+        }
+      }, function() {
+        alert('You must enter a title to create an appointment');
+      });
+    } else if (newAppointment.appointmentDate === '') {
+      this.setState({
+        formError:{
+          title: false,
+          date: true,
+          time: false
+        }
+      }, function() {        
+        alert('You must enter a date to create an appointment');
+      });
+    } else if (newAppointment.appointmentTime === '') {
+      this.setState({
+        formError:{
+          title: false,
+          date: false,
+          time: true
+        }
+      }, function() {
+        alert('You must enter a time to create an appointment');
+      });
+    } else {
+      this.setState({
+        formError:{
+          title: false,
+          date: false,
+          time: false
+        }
+      }, function() {
+        this.props.addAppointment(newAppointment);
+      });
+    }
   }
   render() {
     return (
@@ -55,12 +100,19 @@ class AppointmentForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId="appointmentTitle">
               <ControlLabel><span>* </span>Appointment Title</ControlLabel>
-              <FormControl type="text" placeholder="Appointment Title" value={this.state.appointmentTitle}
-              onChange={this.handleTitleChange}/>
+              <FormControl 
+                type="text" 
+                placeholder="Appointment Title"
+                onChange={this.handleTitleChange}
+                className={this.state.formError.title ? 'error' : null} />
             </FormGroup>    
             <p><span>* </span>Date and Time</p>
-            <AppointmentFormDatePicker updateDate={this.handleDateChange}/>
-            <AppointmentFormTimePicker updateTime={this.handleTimeChange}/>
+            <AppointmentFormDatePicker 
+              updateDate={this.handleDateChange}
+              errorStatus={this.state.formError.date} />
+            <AppointmentFormTimePicker 
+              updateTime={this.handleTimeChange}
+              errorStatus={this.state.formError.time} />
             <FormGroup controlId="destination">
               <ControlLabel>Destination</ControlLabel>
               <FormControl type="text" placeholder="Destination"/>

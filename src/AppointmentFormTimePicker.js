@@ -23,7 +23,8 @@ class AppointmentFormTimePicker extends Component {
         defaultValue={now}
         onChange={this.handleChange}
         format={format}
-        use12Hours
+        use12Hours        
+        className={this.props.errorStatus ? 'error' : null}
       />
     )
   }

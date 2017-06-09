@@ -7,6 +7,11 @@ p:first-of-type {
 span {
   color: tomato;
 }
+.error,
+.react-datepicker__input-container .error,
+.error .rc-time-picker-input {
+  border-color: tomato;
+}
 .react-datepicker__input-container,
 .rc-time-picker {
   float: left;
