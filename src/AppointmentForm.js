@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Button, Panel, FormGroup, ControlLabel,
-         FormControl, HelpBlock, Radio, Checkbox } from 'react-bootstrap';
+         FormControl, HelpBlock } from 'react-bootstrap';
 import MdAddCircleOutline from 'react-icons/lib/md/add-circle-outline';
 import AppointmentFormDatePicker from './AppointmentFormDatePicker';
 import AppointmentFormTimePicker from './AppointmentFormTimePicker';
@@ -26,21 +26,25 @@ class AppointmentForm extends Component {
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
   }
+
   handleTitleChange(e) {
     this.setState({
       appointmentTitle: e.target.value
     });
   }
+
   handleDateChange(date) {
     this.setState({
       appointmentDate: date
     });
   }
+
   handleTimeChange(value) {
     this.setState({
       appointmentTime: value
     });
   }
+
   handleSubmit(e) {
     let newAppointment = {
       appointmentTitle: this.state.appointmentTitle,
@@ -90,6 +94,7 @@ class AppointmentForm extends Component {
       });
     }
   }
+
   render() {
     return (
       <div>
@@ -126,54 +131,6 @@ class AppointmentForm extends Component {
               <FormControl type="file" label="Attachments" />
               <HelpBlock>(3mb max file size)</HelpBlock>
             </FormGroup>
-            <Panel header="Directions" bsStyle="danger">
-              <FormGroup controlId="Start">
-                <ControlLabel>Start</ControlLabel>
-                <FormControl type="text" placeholder="Start"/>
-              </FormGroup>
-              <FormGroup>
-                <p>I will travel by:</p>
-                  <Radio name="radioGroup" inline>
-                    Personal Vehicle
-                  </Radio>
-                  {' '}
-                  <Radio name="radioGroup" inline>
-                    Public Transit
-                  </Radio>
-                  {' '}
-                  <Radio name="radioGroup" inline>
-                    Bike
-                  </Radio>
-                  {' '}
-                  <Radio name="radioGroup" inline>
-                    Foot
-                  </Radio>
-              </FormGroup >
-            </Panel>
-            <Panel header="Notifications" bsStyle="danger">
-              <FormGroup>
-                <p>Notify Me:</p>
-              <Checkbox inline>
-                    30 minutes
-                  </Checkbox>
-                  {' '}
-                  <Checkbox inline>
-                    1 hour
-                  </Checkbox>
-                  {' '}
-                  <Checkbox inline>
-                    2 hours
-                  </Checkbox>
-                  {' '}
-                  <Checkbox inline>
-                    3 hours
-                  </Checkbox>
-                  {' '}<Checkbox inline>
-                    24 hours
-                  </Checkbox>
-                  <p>Before my Appointment</p>
-              </FormGroup>
-            </ Panel>
             <Button type="submit" bsStyle="primary">
               Add Appointment
             </Button> 
