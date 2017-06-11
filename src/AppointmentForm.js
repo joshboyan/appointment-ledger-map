@@ -6,6 +6,7 @@ import MdAddCircleOutline from 'react-icons/lib/md/add-circle-outline';
 import AppointmentFormDatePicker from './AppointmentFormDatePicker';
 import AppointmentFormTimePicker from './AppointmentFormTimePicker';
 import AppointmentFormDestination from './AppointmentFormDestination';
+import AppointmentFormDirections from './AppointmentFormDirections';
 import './AppointmentForm.css';
 
 class AppointmentForm extends Component {
@@ -22,13 +23,15 @@ class AppointmentForm extends Component {
       appointmentDate: '',
       appointmentTime: '',
       appointmentDestination:'',
-      appointmentDescription: ''
+      appointmentDescription: '',
+      appointmentStart: ''
     };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleDestinationChange = this.handleDestinationChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleStartChange = this.handleStartChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -61,6 +64,11 @@ class AppointmentForm extends Component {
       appointmentDescription: e.target.value
     });
   }
+  handleStartChange(address) {
+    this.setState({
+      appointmentStart: address
+    });
+  }
 
   handleSubmit(e) {
     let newAppointment = {
@@ -68,7 +76,8 @@ class AppointmentForm extends Component {
       appointmentDate: this.state.appointmentDate,
       appointmentTime: this.state.appointmentTime,
       appointmentDestination: this.state.appointmentDestination,
-      appointmentDescription: this.state.appointmentDescription
+      appointmentDescription: this.state.appointmentDescription,
+      appointmentStart: this.state.appointmentStart
     }
     e.preventDefault();
     if (newAppointment.appointmentTitle === '') {
@@ -110,7 +119,8 @@ class AppointmentForm extends Component {
         },
         appointmentTitle: '',
         appointmentDescription: '',
-        appointmentDestination: ''
+        appointmentDestination: '',
+        appointmentDate: ''
       }, function() {
         this.props.addAppointment(newAppointment);
       });
@@ -152,7 +162,8 @@ class AppointmentForm extends Component {
             <ControlLabel>Destination</ControlLabel>
               <AppointmentFormDestination 
                 updateDestination={this.handleDestinationChange}
-                address={this.state.appointmentDestination} />
+                address={this.state.appointmentDestination}
+                placeholder='Destination' />
             </FormGroup>
             <FormGroup controlId="formControlsTextarea">
               <ControlLabel>Description and Notes</ControlLabel>
@@ -169,6 +180,9 @@ class AppointmentForm extends Component {
                 label="Attachments" />
               <HelpBlock>(3mb max file size)</HelpBlock>
             </FormGroup>
+            <AppointmentFormDirections 
+              handleStartChange={this.handleStartChange}
+              address={this.state.appointmentStart} />
             <Button 
               type="submit" 
               bsStyle="primary">

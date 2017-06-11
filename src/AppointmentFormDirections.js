@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Panel, FormGroup, ControlLabel,
-         FormControl, Radio } from 'react-bootstrap';
+import { Panel, FormGroup, ControlLabel, Radio } from 'react-bootstrap';
+import AppointmentFormDestination from'./AppointmentFormDestination';
 
 class AppointmentFormDirections extends Component {
   render() {
     return (
       <Panel header="Directions" bsStyle="danger">
         <FormGroup controlId="Start">
-          <ControlLabel>Start</ControlLabel>
-          <FormControl type="text" placeholder="Start"/>
+          <ControlLabel>Start Location</ControlLabel>
+          <AppointmentFormDestination 
+                updateDestination={this.props.handleStartChange}
+                address={this.props.address}
+                placeholder='Start Location' />
         </FormGroup>
         <FormGroup>
           <p>I will travel by:</p>

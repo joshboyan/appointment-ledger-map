@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import PlacesAutocomplete from 'react-places-autocomplete'
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 class AppointmentFormDestination extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class AppointmentFormDestination extends Component {
   render() {
     const inputProps = {
       value: this.props.address,
-      placeholder: 'Destination',
+      placeholder: this.props.placeholder,
       onChange: this.onChange,
     }
     return(
