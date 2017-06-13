@@ -16,7 +16,7 @@ class AppointmentFormDirections extends Component {
         </FormGroup>
         <FormGroup>
           <p>I will travel by:</p>
-            <Radio name="radioGroup" inline>
+            <Radio name="radioGroup" onClick={() => console.log('hey')} inline>
               Personal Vehicle
             </Radio>
             {' '}

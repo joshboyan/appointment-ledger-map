@@ -47,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AppointmentForm addAppointment = {this.updateAppointments} />  
+        <AppointmentForm addAppointment = {this.updateAppointments} />
         <AppointmentList appointments = {this.state.appointments} />     
       </div>
     );

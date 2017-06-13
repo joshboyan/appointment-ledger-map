@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Button, Panel, FormGroup, ControlLabel,
          FormControl, HelpBlock } from 'react-bootstrap';
 import MdAddCircleOutline from 'react-icons/lib/md/add-circle-outline';
+import MdHighlightRemove from 'react-icons/lib/md/highlight-remove';
 import AppointmentFormDatePicker from './AppointmentFormDatePicker';
 import AppointmentFormTimePicker from './AppointmentFormTimePicker';
 import AppointmentFormDestination from './AppointmentFormDestination';
@@ -133,7 +134,9 @@ class AppointmentForm extends Component {
         <Button 
           bsStyle="primary" 
           onClick={ ()=> this.setState({ open: !this.state.open })}>
-          <p><MdAddCircleOutline /> Add Appointment</p>
+          <p>{this.state.open ?
+            <MdHighlightRemove /> :
+            <MdAddCircleOutline />} Add Appointment</p>
         </Button>
         <Panel 
           bsStyle='primary' 
