@@ -7,7 +7,7 @@ class AppointmentList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      open: false
+      open: true
     }
   }
   render() {
@@ -17,9 +17,10 @@ class AppointmentList extends Component {
         return (
         <div key={i}
              id={i}>
-          <Button 
-            bsStyle="info" 
-            onClick={ ()=> this.setState({ open: i })}>
+          <Panel 
+            bsStyle='info' 
+            expanded={true}
+            collapsible>
             <h3>{appointment.appointmentTitle}</h3>
             <hr />
               <Row>
@@ -30,15 +31,21 @@ class AppointmentList extends Component {
                   {appointment.appointmentTime}
                 </Col>
               </Row>
-          </Button>
-          <Panel 
+            <p>{appointment.appointmentDestination}</p>
+            <p>{appointment.appointmentDescription}</p>
+            <AppointmentMap 
+              destination={appointment.appointmentDestination} />
+            <Button 
+              bsStyle="info" 
+              onClick={ ()=> this.setState({ open: i })}>   
+              Directions         
+            </Button>
+            <Panel 
             bsStyle='info' 
             expanded={(this.state.open === i)}
             collapsible>
-            <p>{appointment.appointmentDestination}</p>
-            <p>{appointment.appointmentDescription}</p>            
-            <AppointmentMap 
-              destination={appointment.appointmentDestination}/>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore similique aliquam soluta dicta non consectetur quas suscipit incidunt, vero nihil adipisci optio laudantium rerum quae illum consequuntur explicabo voluptatibus! Ea!</p>
+            </Panel>
           </Panel>
         </div>
         )

@@ -27,7 +27,7 @@ class App extends Component {
           appointmentDate: '4/26/16',
           appointmentTime: '7:00pm',
           appointmentDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla placeat rerum accusamus, obcaecati eum? Ea porro vel laborum molestias harum perspiciatis tempora, voluptas facilis in facere, nemo ab, possimus vitae.',
-          appointmentDestination: '2940 Hoo Doo Loop Oldtown, ID 97213'
+          appointmentDestination: '80 Beach Ave Manahawkin, NJ 08050'
         }
       ]
     };

@@ -1,6 +1,6 @@
 /*global google*/
-import React, { Component } from "react";
-import { withGoogleMap, GoogleMap, DirectionsRenderer } from "react-google-maps";
+import React, { Component } from 'react';
+import { withGoogleMap, GoogleMap, DirectionsRenderer } from 'react-google-maps';
 
 const DirectionsExampleGoogleMap = withGoogleMap(props => (
   <GoogleMap
@@ -11,14 +11,20 @@ const DirectionsExampleGoogleMap = withGoogleMap(props => (
   </GoogleMap>
 ));
 
-export default class AppointmentMap extends Component {
-
-  state = {
-    origin: new google.maps.LatLng(41.8507300, -87.6512600),
-    destination: this.props.destination,
-    directions: null,
+class AppointmentMap extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      origin: new google.maps.LatLng(41.8507300, -87.6512600),
+      destination: this.props.destination,
+      directions: null,
+      style: { 
+        position: 'relative',
+        height: '500px',
+        width: '100%' 
+      }
+    }
   }
-
   componentDidMount() {
     const DirectionsService = new google.maps.DirectionsService();
     console.log(this.props.destination);
@@ -29,8 +35,9 @@ export default class AppointmentMap extends Component {
     }, (result, status) => {
       if (status === google.maps.DirectionsStatus.OK) {
         this.setState({
-          directions: result,
+          directions: result
         });
+         google.maps.event.trigger(GoogleMap, 'resize')
       } else {
         console.error(`error fetching directions ${result}`);
       }
@@ -40,16 +47,17 @@ export default class AppointmentMap extends Component {
     return (
       <DirectionsExampleGoogleMap
         containerElement={
-          <div style={{ height: '500px',
-                        width: '500px' }} />
+          <div style={this.state.style} />
         }
         mapElement={
-          <div style={{ height: '500px',
-                        width: '100%' }} />
+          <div style={this.state.style} />
         }
         center={this.state.origin}
         directions={this.state.directions}
+        resetBoundsOnResize={true}
       />
     );
   }
 }
+
+export default AppointmentMap;
