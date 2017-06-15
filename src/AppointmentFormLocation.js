@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import PlacesAutocomplete from 'react-places-autocomplete';
 
-class AppointmentFormDestination extends Component {
+class AppointmentFormLocation extends Component {
   constructor(props) {
     super(props)
     this.onChange = this.onChange.bind(this);  
@@ -24,4 +24,4 @@ class AppointmentFormDestination extends Component {
   }
 }
 
-export default AppointmentFormDestination;
+export default AppointmentFormLocation;

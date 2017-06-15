@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Panel, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import AppointmentMap from './AppointmentMap.js'
 
 class AppointmentList extends Component {
@@ -12,15 +12,11 @@ class AppointmentList extends Component {
   }
   render() {
   return (
-    <section>
+    <section id="appointmentList">
       {this.props.appointments.map((appointment, i) => {
         return (
         <div key={i}
              id={i}>
-          <Panel 
-            bsStyle='info' 
-            expanded={true}
-            collapsible>
             <h3>{appointment.appointmentTitle}</h3>
             <hr />
               <Row>
@@ -34,19 +30,8 @@ class AppointmentList extends Component {
             <p>{appointment.appointmentDestination}</p>
             <p>{appointment.appointmentDescription}</p>
             <AppointmentMap 
-              destination={appointment.appointmentDestination} />
-            <Button 
-              bsStyle="info" 
-              onClick={ ()=> this.setState({ open: i })}>   
-              Directions         
-            </Button>
-            <Panel 
-            bsStyle='info' 
-            expanded={(this.state.open === i)}
-            collapsible>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore similique aliquam soluta dicta non consectetur quas suscipit incidunt, vero nihil adipisci optio laudantium rerum quae illum consequuntur explicabo voluptatibus! Ea!</p>
-            </Panel>
-          </Panel>
+              destination={appointment.appointmentDestination}
+              origin={appointment.appointmentOrigin} />
         </div>
         )
       })}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Panel, FormGroup, ControlLabel, Radio } from 'react-bootstrap';
-import AppointmentFormDestination from'./AppointmentFormDestination';
+import AppointmentFormLocation from'./AppointmentFormLocation';
 
 class AppointmentFormDirections extends Component {
   render() {
@@ -9,7 +9,7 @@ class AppointmentFormDirections extends Component {
       <Panel header="Directions" bsStyle="danger">
         <FormGroup controlId="Start">
           <ControlLabel>Start Location</ControlLabel>
-          <AppointmentFormDestination 
+          <AppointmentFormLocation
                 updateDestination={this.props.handleStartChange}
                 address={this.props.address}
                 placeholder='Start Location' />

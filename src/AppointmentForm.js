@@ -6,7 +6,7 @@ import MdAddCircleOutline from 'react-icons/lib/md/add-circle-outline';
 import MdHighlightRemove from 'react-icons/lib/md/highlight-remove';
 import AppointmentFormDatePicker from './AppointmentFormDatePicker';
 import AppointmentFormTimePicker from './AppointmentFormTimePicker';
-import AppointmentFormDestination from './AppointmentFormDestination';
+import AppointmentFormLocation from './AppointmentFormLocation';
 import AppointmentFormDirections from './AppointmentFormDirections';
 import './AppointmentForm.css';
 
@@ -163,7 +163,7 @@ class AppointmentForm extends Component {
               errorStatus={this.state.formError.time} />
             <FormGroup controlId="destination">
             <ControlLabel>Destination</ControlLabel>
-              <AppointmentFormDestination 
+              <AppointmentFormLocation
                 updateDestination={this.handleDestinationChange}
                 address={this.state.appointmentDestination}
                 placeholder='Destination' />
@@ -183,7 +183,7 @@ class AppointmentForm extends Component {
                 label="Attachments" />
               <HelpBlock>(3mb max file size)</HelpBlock>
             </FormGroup>
-            <AppointmentFormDirections 
+            <AppointmentFormDirections
               handleStartChange={this.handleStartChange}
               address={this.state.appointmentStart} />
             <Button 
