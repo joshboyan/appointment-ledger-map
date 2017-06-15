@@ -13,7 +13,7 @@ class AppointmentFormDatePicker extends Component {
   }
   handleChange(date) {
     console.log(date);
-    this.props.updateDate(date.format('MMMM Do YYYY'));
+    this.props.updateDate(date.format('MM-DD-YYYY'));
     this.setState({
       date: date
     });

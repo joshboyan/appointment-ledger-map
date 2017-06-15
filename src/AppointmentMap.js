@@ -16,6 +16,9 @@ class AppointmentMap extends Component {
       origin: this.props.origin,
       destination: this.props.destination,
       directions: null,
+      distance: null,
+      duration: null,
+      durationText: null,
       style: { 
         position: 'relative',
         height: '500px',
@@ -26,10 +29,13 @@ class AppointmentMap extends Component {
       open: false,
       userDirections: []      
     }
+    this.duration = this.duration.bind(this);
+  }
+  duration(duration) {
+    this.props.getDuration(duration)
   }
   componentDidMount() {
     const DirectionsService = new google.maps.DirectionsService();
-    console.log(this.props.destination);
     DirectionsService.route({
       origin: this.state.origin,
       destination: this.state.destination,
@@ -40,14 +46,15 @@ class AppointmentMap extends Component {
         let directions = []
         directionsResult.map(step => {
            return directions.push(step.instructions)
-        });        
-        console.log(result);
+        });
         this.setState({          
           directions: result,
           userDirections: directions,
           distance: result.routes[0].legs[0].distance.text,
           duration: result.routes[0].legs[0].duration.value,
           durationText: result.routes[0].legs[0].duration.text,
+        }, function() {
+          this.duration(this.state.duration);
         });
       } else {
         console.error(`error fetching directions ${result}`);

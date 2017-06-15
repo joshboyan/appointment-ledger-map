@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "lodash": "^4.17.4",
+    "moment-parseformat": "^2.2.0",
     "prop-types": "^15.5.10",
     "rc-time-picker": "^2.4.1",
     "react": "^15.5.4",

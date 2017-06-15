@@ -21,12 +21,12 @@ class AppointmentForm extends Component {
         time: false
       },
       appointmentTitle: '',
-      appointmentDate: '',
-      appointmentTime: '',
-      appointmentDestination:'',
+      appointmentDate: null,
+      appointmentTime: null,
+      appointmentDestination: '',
       appointmentDescription: '',
       appointmentOrigin: '',
-      travelMode: ''
+      travelMode: null
     };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -76,7 +76,7 @@ class AppointmentForm extends Component {
     this.setState({
       travelMode: mode
     }, function() {
-      console.log(this.state.travelMode);
+      console.log(this.state.travelMnullode);
     });
   }
   handleSubmit(e) {
