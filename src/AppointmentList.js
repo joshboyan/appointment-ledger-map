@@ -31,7 +31,8 @@ class AppointmentList extends Component {
             <p>{appointment.appointmentDescription}</p>
             <AppointmentMap 
               destination={appointment.appointmentDestination}
-              origin={appointment.appointmentOrigin} />
+              origin={appointment.appointmentOrigin}
+              travelMode={appointment.travelMode} />
         </div>
         )
       })}

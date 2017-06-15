@@ -25,14 +25,16 @@ class AppointmentForm extends Component {
       appointmentTime: '',
       appointmentDestination:'',
       appointmentDescription: '',
-      appointmentStart: ''
+      appointmentOrigin: '',
+      travelMode: ''
     };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleDestinationChange = this.handleDestinationChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.handleStartChange = this.handleStartChange.bind(this);
+    this.handleOriginChange = this.handleOriginChange.bind(this);
+    this.handleTravelModeChange = this.handleTravelModeChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -65,12 +67,18 @@ class AppointmentForm extends Component {
       appointmentDescription: e.target.value
     });
   }
-  handleStartChange(address) {
+  handleOriginChange(address) {
     this.setState({
-      appointmentStart: address
+      appointmentOrigin: address
     });
   }
-
+  handleTravelModeChange(mode) {
+    this.setState({
+      travelMode: mode
+    }, function() {
+      console.log(this.state.travelMode);
+    });
+  }
   handleSubmit(e) {
     let newAppointment = {
       appointmentTitle: this.state.appointmentTitle,
@@ -78,7 +86,8 @@ class AppointmentForm extends Component {
       appointmentTime: this.state.appointmentTime,
       appointmentDestination: this.state.appointmentDestination,
       appointmentDescription: this.state.appointmentDescription,
-      appointmentStart: this.state.appointmentStart
+      appointmentOrigin: this.state.appointmentOrigin,
+      travelMode: this.state.travelMode
     }
     e.preventDefault();
     if (newAppointment.appointmentTitle === '') {
@@ -113,6 +122,7 @@ class AppointmentForm extends Component {
       });
     } else {
       this.setState({
+        open: false,
         formError:{
           title: false,
           date: false,
@@ -121,7 +131,9 @@ class AppointmentForm extends Component {
         appointmentTitle: '',
         appointmentDescription: '',
         appointmentDestination: '',
-        appointmentDate: ''
+        appointmentDate: '',
+        appointmentOrigin: '',
+        travelMode: ''
       }, function() {
         this.props.addAppointment(newAppointment);
       });
@@ -184,8 +196,9 @@ class AppointmentForm extends Component {
               <HelpBlock>(3mb max file size)</HelpBlock>
             </FormGroup>
             <AppointmentFormDirections
-              handleStartChange={this.handleStartChange}
-              address={this.state.appointmentStart} />
+              handleOriginChange={this.handleOriginChange}
+              address={this.state.appointmentOrigin}
+              travelMode={this.handleTravelModeChange} />
             <Button 
               type="submit" 
               bsStyle="primary">

@@ -4,10 +4,7 @@ import { withGoogleMap, GoogleMap, DirectionsRenderer } from 'react-google-maps'
 import { Button, Panel } from 'react-bootstrap';
 
 const DirectionsExampleGoogleMap = withGoogleMap(props => (
-  <GoogleMap
-    defaultZoom={7}
-    defaultCenter={props.center}
-  >
+  <GoogleMap>
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>
 ));
@@ -16,8 +13,7 @@ class AppointmentMap extends Component {
   constructor(props){
     super(props)
     this.state = {
-      title: this.props.title,
-      origin: new google.maps.LatLng(41.8507300, -87.6512600),
+      origin: this.props.origin,
       destination: this.props.destination,
       directions: null,
       style: { 
@@ -37,7 +33,7 @@ class AppointmentMap extends Component {
     DirectionsService.route({
       origin: this.state.origin,
       destination: this.state.destination,
-      travelMode: google.maps.TravelMode.DRIVING,
+      travelMode: this.props.travelMode,
     }, (result, status) => {
       if (status === google.maps.DirectionsStatus.OK) {
         let directionsResult = result.routes[0].legs[0].steps;
@@ -48,7 +44,10 @@ class AppointmentMap extends Component {
         console.log(result);
         this.setState({          
           directions: result,
-          userDirections: directions
+          userDirections: directions,
+          distance: result.routes[0].legs[0].distance.text,
+          duration: result.routes[0].legs[0].duration.value,
+          durationText: result.routes[0].legs[0].duration.text,
         });
       } else {
         console.error(`error fetching directions ${result}`);
@@ -67,7 +66,6 @@ class AppointmentMap extends Component {
           }
           center={this.state.origin}
           directions={this.state.directions}
-          resetBoundsOnResize={true}
         />
         <Button 
           bsStyle="info" 
@@ -75,9 +73,12 @@ class AppointmentMap extends Component {
           Directions         
         </Button>
         <Panel 
-          bsStyle='info' 
+          bsStyle='info'
+          className='directions' 
           expanded={this.state.open}
           collapsible>
+          <h4>Distance: {this.state.distance}</h4>
+          <h4>Trip Time: {this.state.durationText}</h4>
           {this.state.userDirections.map((step, i) => {
             function createMarkup() {
               return {__html: step};
