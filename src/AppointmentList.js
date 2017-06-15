@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Appointment from './Appointment';
 
-class AppointmentList extends Component {
-  render() {
+const AppointmentList = ({appointments}) => {
   return (
     <section id="appointmentList">
-      {this.props.appointments.map((appointment, i) => {
+      {appointments.map((appointment, i) => {
         return (
           <Appointment 
             appointmentData={appointment}
@@ -16,7 +15,6 @@ class AppointmentList extends Component {
       })}
     </section>
   )
-  }
 }
 
 AppointmentList.propTypes = {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import { Button, Panel, FormGroup, ControlLabel,
-         FormControl, HelpBlock } from 'react-bootstrap';
+         FormControl } from 'react-bootstrap';
 import MdAddCircleOutline from 'react-icons/lib/md/add-circle-outline';
 import MdHighlightRemove from 'react-icons/lib/md/highlight-remove';
 import AppointmentFormDatePicker from './AppointmentFormDatePicker';
@@ -188,13 +187,6 @@ class AppointmentForm extends Component {
                 value={this.state.appointmentDescription}
                 onChange={this.handleDescriptionChange} />
             </FormGroup>
-            <FormGroup controlId="formControlsFile">
-              <ControlLabel>Add File</ControlLabel>
-              <FormControl 
-                type="file" 
-                label="Attachments" />
-              <HelpBlock>(3mb max file size)</HelpBlock>
-            </FormGroup>
             <AppointmentFormDirections
               handleOriginChange={this.handleOriginChange}
               address={this.state.appointmentOrigin}
@@ -210,7 +202,5 @@ class AppointmentForm extends Component {
     );
   }
 }
-
-// AppointmentForm.propTypes = {};
 
 export default AppointmentForm;
