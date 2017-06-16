@@ -1,10 +1,16 @@
+html {
+  background-color: #ffefff; 
+}
 .App {
   text-align: center;
-  font-size: 18px; }
+  font-size: 18px;  
+  background-color: #ffefff; 
+  }
 
 .btn-primary:first-of-type {
   font-size: 24px;
-  padding-top: 20px; }
+  padding-top: 20px; 
+  }
 
 .row div {
   font-size: 18px;
@@ -14,10 +20,16 @@
   width: 50%;
   max-width: 200px;
   height: 45px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  font-size: 18px;
 }
 h3 {
+  margin-top: 48px;
   font-weight: 700;
+}
+
+.directions {
+  text-align: left;
 }
 hr {
   width: 90%;
@@ -25,12 +37,24 @@ hr {
   margin-right: auto;
 }
 .col-xs-6 {
-  margin-bottom: 12px;
+  margin-top: 12px;
   font-weight: 700;
+}
+
+.appointment {
+  margin: 24px auto;
+  width: 95%;
+  max-width: 900px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 #appointmentList p {
   text-align: left;
   width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 16px auto;
+}
+
+.panel-default {
+  border: none;
 }

@@ -7,13 +7,6 @@ class AppointmentFormDirections extends Component {
   render() {
     return (
       <Panel header="Directions" bsStyle="danger">
-        <FormGroup controlId="origin">
-          <ControlLabel>Start Location</ControlLabel>
-          <AppointmentFormLocation
-                updateDestination={this.props.handleOriginChange}
-                address={this.props.address}
-                placeholder='Start Location' />
-        </FormGroup>
         <FormGroup
           className='radio'>
           <p>I will travel by:</p>
@@ -40,7 +33,14 @@ class AppointmentFormDirections extends Component {
                    inline>
               Walking
             </Radio>
-        </FormGroup >
+        </FormGroup>
+        <FormGroup controlId="origin">
+          <ControlLabel>Start Location</ControlLabel>
+          <AppointmentFormLocation
+                updateDestination={this.props.handleOriginChange}
+                address={this.props.address}
+                placeholder='Start Location' />
+        </FormGroup>
       </Panel>
     )
   }

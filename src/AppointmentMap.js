@@ -79,8 +79,7 @@ class AppointmentMap extends Component {
           onClick={ ()=> this.setState({ open: !this.state.open })}>   
           Directions         
         </Button>
-        <Panel 
-          bsStyle='info'
+        <Panel
           className='directions' 
           expanded={this.state.open}
           collapsible>
@@ -92,6 +91,7 @@ class AppointmentMap extends Component {
             }   
             return (
               <div key={i}>
+                <hr />
                 <h5>Step {i+1}</h5>
                 <div dangerouslySetInnerHTML={createMarkup()} />
               </div>

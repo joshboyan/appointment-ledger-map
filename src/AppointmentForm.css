@@ -1,3 +1,7 @@
+.form-body {
+  max-width: 900px;
+  margin: 24px auto 48px auto;
+}
 form {
   text-align: left;
 }
@@ -79,6 +83,7 @@ span {
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 #PlacesAutocomplete__root input {
+  z-index: 100;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -90,6 +95,10 @@ span {
   line-height: 1.42857143;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#PlacesAutoComplete_autocomplete-container {
+  z-index: 1000;
+  background-color: tomato;
 }
 .rc-time-picker-panel-input {
   font-size: 18px;
@@ -104,8 +113,22 @@ span {
   font-size: 24px;
   padding: 12px;
 }
+textarea {
+  min-height: 200px;
+}
+.radio {
+  position: relative;
+  z-index: 0;
+  text-align: center;
+}
 
-.radio,
 .panel-heading {
   text-align: center;
+}
+
+.btn.submit {
+  padding-top: 8px;
+  width: 70%;
+  margin: 12px 15%;
+
 }

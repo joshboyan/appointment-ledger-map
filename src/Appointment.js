@@ -29,7 +29,7 @@ class Appointment extends Component {
    appointmentDestination, appointmentOrigin, appointmentTime, 
    travelMode } = this.props.appointmentData;
     return (
-      <div>
+      <div className='appointment'>
         <h3>{appointmentTitle}</h3>
         <hr />
           <Row>

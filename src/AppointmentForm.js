@@ -141,7 +141,7 @@ class AppointmentForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form-body">
         <Button 
           bsStyle="primary" 
           onClick={ ()=> this.setState({ open: !this.state.open })}>
@@ -193,7 +193,8 @@ class AppointmentForm extends Component {
               travelMode={this.handleTravelModeChange} />
             <Button 
               type="submit" 
-              bsStyle="primary">
+              bsStyle="primary"
+              className="submit">
               Add Appointment
             </Button> 
           </form>          
