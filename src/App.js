@@ -43,6 +43,9 @@ class App extends Component {
   updateAppointments(newAppointment) {
     var newAppointmentList = [...this.state.appointments];
     newAppointmentList.push(newAppointment);
+    newAppointmentList.sort((a,b) => {
+        return new Date(a.appointmentDate) - new Date(b.appointmentDate);
+      });
     this.setState({
       appointments: newAppointmentList        
     }, function() {

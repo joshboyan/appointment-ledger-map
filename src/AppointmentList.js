@@ -5,7 +5,7 @@ import Appointment from './Appointment';
 const AppointmentList = ({appointments}) => {
   return (
     <section id="appointmentList">
-      {appointments.map((appointment, i) => {
+        {appointments.map((appointment, i) => {
         return (
           <Appointment 
             appointmentData={appointment}

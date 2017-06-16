@@ -6,16 +6,31 @@
   font-size: 24px;
   padding-top: 20px; }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px; }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
-
 .row div {
   font-size: 18px;
+}
+
+#appointmentList button {
+  width: 50%;
+  max-width: 200px;
+  height: 45px;
+  margin-bottom: 12px;
+}
+h3 {
+  font-weight: 700;
+}
+hr {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.col-xs-6 {
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+#appointmentList p {
+  text-align: left;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }

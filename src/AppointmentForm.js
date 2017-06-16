@@ -75,7 +75,7 @@ class AppointmentForm extends Component {
     this.setState({
       travelMode: mode
     }, function() {
-      console.log(this.state.travelMnullode);
+      console.log(this.state.travelMode);
     });
   }
   handleSubmit(e) {
@@ -156,7 +156,7 @@ class AppointmentForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId="appointmentTitle">
               <ControlLabel>
-                <span>* </span>Appointment Title
+                Appointment Title<span> *</span>
               </ControlLabel>
               <FormControl 
                 type="text" 
@@ -165,7 +165,7 @@ class AppointmentForm extends Component {
                 onChange={this.handleTitleChange}
                 className={this.state.formError.title ? 'error' : null} />
             </FormGroup>    
-            <p><span>* </span>Date and Time</p>
+            <p>Date and Time<span> *</span></p>
             <AppointmentFormDatePicker 
               updateDate={this.handleDateChange}
               errorStatus={this.state.formError.date} />

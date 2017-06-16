@@ -1,3 +1,6 @@
+form {
+  text-align: left;
+}
 button {
   width: 100%;
 }
@@ -63,14 +66,26 @@ span {
   padding: .85rem 3.25rem 1rem .65rem;
 }  
 
-.rc-time-picker-input,
-#PlacesAutocomplete__root input {
+.rc-time-picker-input {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
   height: 34px;
   font-size: 18px;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#PlacesAutocomplete__root input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  height: 34px;
+  font-size: 14px;
+  color: #555;
   padding: 6px 12px;
   line-height: 1.42857143;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
@@ -88,4 +103,9 @@ span {
 .rc-time-picker-panel-select li {
   font-size: 24px;
   padding: 12px;
+}
+
+.radio,
+.panel-heading {
+  text-align: center;
 }

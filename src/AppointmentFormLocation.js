@@ -16,6 +16,7 @@ class AppointmentFormLocation extends Component {
       value: this.props.address,
       placeholder: this.props.placeholder,
       onChange: this.onChange,
+      className: 'autoComplete'
     }
     return(
       <PlacesAutocomplete 

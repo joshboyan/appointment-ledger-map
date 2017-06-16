@@ -14,7 +14,8 @@ class AppointmentFormDirections extends Component {
                 address={this.props.address}
                 placeholder='Start Location' />
         </FormGroup>
-        <FormGroup>
+        <FormGroup
+          className='radio'>
           <p>I will travel by:</p>
             <Radio name="radioGroup" 
                    onClick={() => this.props.travelMode('DRIVING')} 
