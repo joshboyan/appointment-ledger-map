@@ -55,7 +55,7 @@ class Appointment extends Component {
   }
 }
 
-this.PropTypes ={
+Appointment.PropTypes ={
   appointmentData: PropTypes.object
 }
 export default Appointment;
