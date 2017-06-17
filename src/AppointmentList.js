@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Appointment from './Appointment';
 
-const AppointmentList = ({appointments}) => {
+const AppointmentList = ({appointments = []}) => {
   return (
     <section id="appointmentList">
         {appointments.map((appointment, i) => {
