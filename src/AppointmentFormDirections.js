@@ -5,13 +5,6 @@ import AppointmentFormLocation from'./AppointmentFormLocation';
 import MdLocationSearching from 'react-icons/lib/md/location-searching';
 
 class AppointmentFormDirections extends Component {
-  geolocation() {
-    if ('geolocation' in navigator) {
-      this.props.handleOriginChange(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
-    } else {
-      alert('Geolocation is not currently available')
-    }
-  }
   render() {
     return (
       <Panel header="Directions" bsStyle="danger">
@@ -51,8 +44,7 @@ class AppointmentFormDirections extends Component {
         </FormGroup>
         <Button 
           bsStyle='link'
-          className='geolocation'
-          onClick={()=> {this.geolocation}}>
+          className='geolocation'>
           <MdLocationSearching /> Use Current Location
         </Button>
       </Panel>
