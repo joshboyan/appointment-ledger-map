@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Panel, FormGroup, ControlLabel, Radio } from 'react-bootstrap';
+import { Panel, FormGroup, ControlLabel, Radio, Button } from 'react-bootstrap';
 import AppointmentFormLocation from'./AppointmentFormLocation';
+import MdLocationSearching from 'react-icons/lib/md/location-searching';
 
 class AppointmentFormDirections extends Component {
+  geolocation() {
+    if ('geolocation' in navigator) {
+      this.props.handleOriginChange(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+    } else {
+      alert('Geolocation is not currently available')
+    }
+  }
   render() {
     return (
       <Panel header="Directions" bsStyle="danger">
@@ -41,6 +49,12 @@ class AppointmentFormDirections extends Component {
                 address={this.props.address}
                 placeholder='Start Location' />
         </FormGroup>
+        <Button 
+          bsStyle='link'
+          className='geolocation'
+          onClick={()=> {this.geolocation}}>
+          <MdLocationSearching /> Use Current Location
+        </Button>
       </Panel>
     )
   }

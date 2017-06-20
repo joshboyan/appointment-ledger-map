@@ -39,7 +39,9 @@ class App extends Component {
     };
     this.updateAppointments = this.updateAppointments.bind(this);
   }
-
+  componentDidMount () {
+  window.scrollTo(0, 0)
+}
   updateAppointments(newAppointment) {
     var newAppointmentList = [...this.state.appointments];
     newAppointmentList.push(newAppointment);
