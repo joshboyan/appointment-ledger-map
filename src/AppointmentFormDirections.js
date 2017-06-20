@@ -1,3 +1,4 @@
+/* global google*/
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Panel, FormGroup, ControlLabel, Radio, Button } from 'react-bootstrap';
@@ -5,6 +6,33 @@ import AppointmentFormLocation from'./AppointmentFormLocation';
 import MdLocationSearching from 'react-icons/lib/md/location-searching';
 
 class AppointmentFormDirections extends Component {
+  constructor(props) {
+    super(props)
+    this.geolocation = this.geolocation.bind(this);
+  }
+  geolocation() {
+    const that = this;
+    if ('geolocation' in navigator) {
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
+
+      function success(pos) {
+        const position = pos.coords;
+        that.props.handleOriginChange(new google.maps.LatLng(position.latitude, position.longitude))
+      };
+
+      function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+      };
+      navigator.geolocation.getCurrentPosition(success, error, options);
+      
+    } else {
+      alert('Geolocation is not currently available')
+    }
+  }
   render() {
     return (
       <Panel header="Directions" bsStyle="danger">
@@ -13,7 +41,8 @@ class AppointmentFormDirections extends Component {
           <p>I will travel by:</p>
             <Radio name="radioGroup" 
                    onClick={() => this.props.travelMode('DRIVING')} 
-                   inline>
+                   inline
+                   defaultChecked>
               Driving
             </Radio>
             {' '}
@@ -44,7 +73,8 @@ class AppointmentFormDirections extends Component {
         </FormGroup>
         <Button 
           bsStyle='link'
-          className='geolocation'>
+          className='geolocation'
+          onClick={this.geolocation}>
           <MdLocationSearching /> Use Current Location
         </Button>
       </Panel>

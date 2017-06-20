@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
@@ -28,6 +28,10 @@ class AppointmentFormTimePicker extends Component {
       />
     )
   }
+}
+
+AppointmentFormTimePicker.PropTypes = {
+  updateTime: PropTypes.func
 }
 
 export default AppointmentFormTimePicker;

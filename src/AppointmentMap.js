@@ -1,5 +1,6 @@
 /*global google*/
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withGoogleMap, GoogleMap, DirectionsRenderer } from 'react-google-maps';
 import { Button, Panel } from 'react-bootstrap';
 
@@ -103,4 +104,9 @@ class AppointmentMap extends Component {
   }
 }
 
+AppointmentMap.PropTypes = {
+  origin: PropTypes.string,
+  destination:  PropTypes.string,
+  getDuration: PropTypes.func
+}
 export default AppointmentMap;

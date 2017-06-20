@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import PlacesAutocomplete from 'react-places-autocomplete';
 
 class AppointmentFormLocation extends Component {
@@ -23,6 +23,11 @@ class AppointmentFormLocation extends Component {
         inputProps={inputProps} />
     )
   }
+}
+
+AppointmentFormLocation.PropTypes = {
+  address: PropTypes.string,
+  placeholder: PropTypes.string
 }
 
 export default AppointmentFormLocation;

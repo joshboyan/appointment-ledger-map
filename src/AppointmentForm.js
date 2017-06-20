@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button, Panel, FormGroup, ControlLabel,
          FormControl } from 'react-bootstrap';
 import MdAddCircleOutline from 'react-icons/lib/md/add-circle-outline';
@@ -25,7 +26,7 @@ class AppointmentForm extends Component {
       appointmentDestination: '',
       appointmentDescription: '',
       appointmentOrigin: '',
-      travelMode: null
+      travelMode: 'DRIVING'
     };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -202,6 +203,10 @@ class AppointmentForm extends Component {
       </div>
     );
   }
+}
+
+AppointmentForm.PropTypes = {
+  addAppointment: PropTypes.func
 }
 
 export default AppointmentForm;

@@ -43,8 +43,8 @@ class Appointment extends Component {
           <hr />
         <p>{appointmentDestination}</p>
         <p>{appointmentDescription}</p>
-        <p><strong>Start {travelMode.toLowerCase()} by 
-           {this.state.arrival} to arrive on time.</strong></p>
+        {travelMode ? <p><strong>Start {travelMode.toLowerCase()} by 
+           {this.state.arrival} to arrive on time.</strong></p> : null }
         <AppointmentMap 
           destination={appointmentDestination}
           origin={appointmentOrigin}
@@ -56,6 +56,6 @@ class Appointment extends Component {
 }
 
 Appointment.PropTypes ={
-  appointmentData: PropTypes.object
+  appointmentData: PropTypes.object,
 }
 export default Appointment;
