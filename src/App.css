@@ -1,19 +1,25 @@
 html {
-  background-color: #ffefff; 
+  background-color: #efefef; 
 }
 .App {
   text-align: center;
   font-size: 18px;  
-  background-color: #ffefff; 
+  background-color: #efefef; 
   }
 
 .btn-primary:first-of-type {
   font-size: 24px;
   padding-top: 20px; 
+  width: 90%;
   }
 
 .row div {
   font-size: 18px;
+}
+
+.search {
+  width: 90%;
+  margin: 0 auto;
 }
 
 #appointmentList button {

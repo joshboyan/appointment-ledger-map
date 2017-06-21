@@ -151,7 +151,6 @@ class AppointmentForm extends Component {
             <MdAddCircleOutline />} Add Appointment</p>
         </Button>
         <Panel 
-          bsStyle='primary' 
           expanded={this.state.open}
           collapsible>          
           <form onSubmit={this.handleSubmit}>
