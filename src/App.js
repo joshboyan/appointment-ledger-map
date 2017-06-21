@@ -36,7 +36,8 @@ class App extends Component {
           appointmentOrigin: 'Rock Island, IL',
           travelMode: 'DRIVING'
         }
-      ] 
+      ],
+      filteredAppointments: []
     };
     this.updateAppointments = this.updateAppointments.bind(this);
     this.filterAppoinments = this.filterAppoinments.bind(this);
