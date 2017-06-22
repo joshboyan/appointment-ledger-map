@@ -90,6 +90,7 @@ class AppointmentForm extends Component {
       travelMode: this.state.travelMode
     }
     e.preventDefault();
+    // Validation: chack that user has entered title, date and time
     if (newAppointment.appointmentTitle === '') {
       this.setState({
         formError:{

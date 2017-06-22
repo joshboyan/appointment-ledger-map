@@ -50,10 +50,15 @@ router.route('/appointments')
  })
  //post new appointment to the database
  .post(function(req, res) {
- var appointment = new Apppointment();
+ var appointment = new Appointment();
  //body parser lets us use the req.body
- appointment.author = req.body.author;
- appointment.text = req.body.text;
+  appointment.appointmentTitle = req.body.appointmentTitle;
+  appointment.appointmentDate = req.body.appointmentDate;
+  appointment.appointmentTime = req.body.appointmentTime;
+  appointment.appointmentDescription = req.body.appointmentDescription;
+  appointment.appointmentDestination = req.body.appointmentDestination;
+  appointment.appointmentOrigin = req.body.appointmentOrigin;
+  appointment.travelMode = req.body.travelMode;
 appointment.save(function(err) {
  if (err)
  res.send(err);

@@ -3,6 +3,7 @@ import './App.css';
 import AppointmentForm from './AppointmentForm';
 import SearchForm from './SearchForm';
 import AppointmentList from './AppointmentList';
+import axios from 'axios';
 
 class App extends Component {
   constructor (props) {
@@ -11,14 +12,22 @@ class App extends Component {
       appointments: [],
       filteredAppointments: []
     };
+    this.loadAppointments = this.loadAppointments.bind(this);
     this.updateAppointments = this.updateAppointments.bind(this);
     this.filterAppoinments = this.filterAppoinments.bind(this);
   }
-  componentWillMount () {
+  loadAppointments() {
+    axios.get(this.props.url)
+    .then(res => {
+      this.setState({ 
+        appointments: res.data,
+        filteredAppointments: res.data
+       });
+    })
+  }
+  componentDidMount () {
     window.scrollTo(0, 0);
-    this.setState({
-      filteredAppointments: this.state.appointments
-    });
+    this.loadAppointments();
   }
   updateAppointments(newAppointment) {
     var newAppointmentList = [...this.state.appointments];
@@ -44,10 +53,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AppointmentForm addAppointment = {this.updateAppointments} />
-        <SearchForm filterAppoinments = {this.filterAppoinments}
-                    filteredAppointments = {this.state.filteredAppointments} />
-        <AppointmentList appointments = {this.state.filteredAppointments} />     
+        <AppointmentForm 
+          addAppointment = {this.updateAppointments} />
+        <SearchForm 
+          filterAppoinments = {this.filterAppoinments}
+          filteredAppointments = {this.state.filteredAppointments} />
+        <AppointmentList 
+          appointments = {this.state.filteredAppointments} />     
       </div>
     );
   }
