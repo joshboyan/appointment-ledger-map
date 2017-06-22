@@ -28,6 +28,7 @@ class AppointmentForm extends Component {
       appointmentOrigin: '',
       travelMode: 'DRIVING'
     };
+    this.makeStringSafe = this.makeStringSafe.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
@@ -37,10 +38,13 @@ class AppointmentForm extends Component {
     this.handleTravelModeChange = this.handleTravelModeChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  makeStringSafe(str) {
+    return str.replace('<', '').replace('>','').replace('?','').replace('/','');
+  }
   handleTitleChange(e) {
+    let safeTitle = this.makeStringSafe(e.target.value);
     this.setState({
-      appointmentTitle: e.target.value
+      appointmentTitle: safeTitle
     });
   }
 
@@ -57,19 +61,22 @@ class AppointmentForm extends Component {
   }
   
   handleDestinationChange(address) {
+    let safeAddress = this.makeStringSafe(address);
     this.setState({
-      appointmentDestination: address
+      appointmentDestination: safeAddress
     });
   }
 
   handleDescriptionChange(e) {
+    let safeDescription = this.makeStringSafe(e.target.value)
     this.setState({
-      appointmentDescription: e.target.value
+      appointmentDescription: safeDescription
     });
   }
   handleOriginChange(address) {
+    let safeAddress = this.makeStringSafe(address);
     this.setState({
-      appointmentOrigin: address
+      appointmentOrigin: safeAddress
     });
   }
   handleTravelModeChange(mode) {
@@ -91,7 +98,7 @@ class AppointmentForm extends Component {
     }
     e.preventDefault();
     // Validation: chack that user has entered title, date and time
-    if (newAppointment.appointmentTitle === '') {
+    if (!newAppointment.appointmentTitle) {
       this.setState({
         formError:{
           title: true,
@@ -101,7 +108,7 @@ class AppointmentForm extends Component {
       }, function() {
         alert('You must enter a title to create an appointment');
       });
-    } else if (newAppointment.appointmentDate === '') {
+    } else if (!newAppointment.appointmentDate) {
       this.setState({
         formError:{
           title: false,
@@ -111,7 +118,7 @@ class AppointmentForm extends Component {
       }, function() {        
         alert('You must enter a date to create an appointment');
       });
-    } else if (newAppointment.appointmentTime === '') {
+    } else if (!newAppointment.appointmentTime) {
       this.setState({
         formError:{
           title: false,

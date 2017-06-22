@@ -9,7 +9,7 @@ const AppointmentList = ({appointments = []}) => {
         return (
           <Appointment 
             appointmentData={appointment}
-            key={i}
+            key={appointment['_id']}
             id={i} />
         )
       })}
