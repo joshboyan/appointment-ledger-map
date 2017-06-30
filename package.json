@@ -14,7 +14,9 @@
     "react-ui/node_modules"
   ],
   "dependencies": {
-    "express": "^4.14.1",    
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "express": "^4.14.1",
     "mongoose": "^4.10.7"
   },
   "repository": {
@@ -28,5 +30,7 @@
     "react"
   ],
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }

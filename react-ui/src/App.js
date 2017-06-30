@@ -17,8 +17,9 @@ class App extends Component {
     this.filterAppoinments = this.filterAppoinments.bind(this);
   }
   loadAppointments() {
-    axios.get(this.props.url)
+    axios.get('api/appointments')
     .then(res => {
+      console.log(res.data)
       this.setState({ 
         appointments: res.data,
         filteredAppointments: res.data

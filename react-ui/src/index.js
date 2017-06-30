@@ -4,8 +4,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-  <App
-    url='/api/appointments' />,
+  <App />,
   document.getElementById('root')
 );
 registerServiceWorker();
