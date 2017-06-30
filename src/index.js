@@ -5,7 +5,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <App
-    url='http://localhost:3001/api/appointments' />,
+    url='/api/appointments' />,
   document.getElementById('root')
 );
 registerServiceWorker();
