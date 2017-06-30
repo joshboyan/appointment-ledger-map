@@ -1,5 +1,6 @@
 //first we import our dependencies…
 var express = require('express');
+var path = require('path');
 var mongoose = require('mongoose');
 var cors = require('cors');
 var bodyParser = require('body-parser');
@@ -7,6 +8,8 @@ var Appointment = require('./model/appointments');
 //and create our instances
 var app = express();
 var router = express.Router();
+
+app.use(express.static(path.resolve(__dirname, '/build')));
 //set our port to either a predetermined port number if you have set 
 //it up, or 3001
 var port = process.env.API_PORT || 3001;
