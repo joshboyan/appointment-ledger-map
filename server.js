@@ -1,7 +1,7 @@
 //first we import our dependencies…
 var express = require('express');
 var mongoose = require('mongoose');
-vae cors = require('cors');
+var cors = require('cors');
 var bodyParser = require('body-parser');
 var Appointment = require('./model/appointments');
 //and create our instances
