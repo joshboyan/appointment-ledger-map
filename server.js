@@ -1,6 +1,7 @@
 //first we import our dependencies…
 var express = require('express');
 var mongoose = require('mongoose');
+vae cors = require('cors');
 var bodyParser = require('body-parser');
 var Appointment = require('./model/appointments');
 //and create our instances
@@ -11,6 +12,7 @@ var router = express.Router();
 var port = process.env.API_PORT || 3001;
 //db config
 mongoose.connect('mongodb://josh11:josh11@ds133162.mlab.com:33162/heroku_tl016m5d');
+app.use(cors());
 //now we should configure the API to use bodyParser and look for 
 //JSON data in the request body
 app.use(bodyParser.urlencoded({ extended: true }));
