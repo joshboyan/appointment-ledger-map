@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var Appointment = require('./model/appointments');
+
 //and create our instances
 var app = express();
 var router = express.Router();
