@@ -34,7 +34,7 @@ router.get('/', function(req, res) {
 app.use('/api', router);
 //starts the server and listens for requests
 app.listen(port, function() {
- console.log(`api running on port ${port}`);
+ console.log('api running on port' + port);
 });
 //adding the /appointments route to our /api router
 router.route('/appointments')
