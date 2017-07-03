@@ -10,7 +10,7 @@ var Appointment = require('./model/appointments');
 var app = express();
 var router = express.Router();
 
-app.use(express.static(path.resolve(__dirname, 'react-ui/build')));
+app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 //set our port to either a predetermined port number if you have set 
 //it up, or 3001
 var port = process.env.PORT || 5000;
