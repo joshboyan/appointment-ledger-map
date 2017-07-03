@@ -39,10 +39,13 @@ class AppointmentForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   makeStringSafe(str) {
+    if(typeof str === 'string'){
     return str.replace('<', '').replace('>','').replace('?','').replace('/','');
+    }
   }
   handleTitleChange(e) {
     let safeTitle = this.makeStringSafe(e.target.value);
+    console.log(safeTitle);
     this.setState({
       appointmentTitle: safeTitle
     });

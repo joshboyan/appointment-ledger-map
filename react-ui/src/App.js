@@ -18,14 +18,14 @@ class App extends Component {
   }
   loadAppointments() {
     axios.get('api/appointments')
-    .then(res => {
-      console.log(res.data)
+    .then(response => {
+      console.log(response.data)
       this.setState({ 
-        appointments: res.data,
-        filteredAppointments: res.data
+        appointments: response.data,
+        filteredAppointments: response.data
        });
-    }).catch(err => {
-      console.log(err);
+    }).catch(error => {
+      console.log(error);
     })
   }
   componentDidMount () {
@@ -41,7 +41,22 @@ class App extends Component {
     this.setState({
       appointments: newAppointmentList,
       filteredAppointments: newAppointmentList      
-    });    
+    }); 
+    axios.post('api/appointments', {
+      appointmentTitle: newAppointment.appointmentTitle,
+      appointmentDate: newAppointment.appointmentDate,
+      appointmentTime: newAppointment.appointmentTime,
+      appointmentDestination: newAppointment.appointmentDestination,
+      appointmentDescription: newAppointment.appointmentDescription,
+      appointmentOrigin: newAppointment.appointmentOrigin,
+      travelMode: newAppointment.travelMode
+    })
+    .then(function (response) {
+    console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });  
   }
 
   filterAppoinments(input) {

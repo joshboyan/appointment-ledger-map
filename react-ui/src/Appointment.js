@@ -43,13 +43,16 @@ class Appointment extends Component {
           <hr />
         <p>{appointmentDestination}</p>
         <p>{appointmentDescription}</p>
-        {travelMode ? <p><strong>Start {travelMode.toLowerCase()} by 
-           {this.state.arrival} to arrive on time.</strong></p> : null }
-        <AppointmentMap 
+        {appointmentOrigin && appointmentDestination ?
+        <div>
+        <p><strong>Start {travelMode.toLowerCase()} by 
+           {this.state.arrival} to arrive on time.</strong></p>
+         <AppointmentMap 
           destination={appointmentDestination}
           origin={appointmentOrigin}
           travelMode={travelMode}
-          getDuration={this.getDuration} />
+          getDuration={this.getDuration} /> 
+        </div> : null }
     </div>
     )
   }
