@@ -15,7 +15,7 @@ app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 //it up, or 3899
 var port = process.env.PORT || 3899;
 //db config
-mongoose.connect('mongodb://josh22:josh22@ds145892.mlab.com:45892/heroku_8hl5wfnv');
+mongoose.connect('mongodb://josh11:josh11@ds133162.mlab.com:33162/heroku_tl016m5d');
 app.use(cors());
 //now we should configure the API to use bodyParser and look for 
 //JSON data in the request body
