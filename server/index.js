@@ -60,12 +60,9 @@ router.route('/appointments')
   appointment.appointmentOrigin = req.body.appointmentOrigin;
   appointment.travelMode = req.body.travelMode;
   appointment.save(function(err) {
-  if (err) {
+  if (err) 
     res.send(err);
     res.json({ message: 'Appointment successfully added!' });
-  } else {
-    console.log('Great Success!')
-  }
   });
  });
 //Use our router configuration when we call /api
