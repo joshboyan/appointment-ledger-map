@@ -13,7 +13,7 @@ var router = express.Router();
 app.use(express.static(path.resolve(__dirname, 'react-ui/build')));
 //set our port to either a predetermined port number if you have set 
 //it up, or 3001
-var port = process.env.API_PORT || 5000;
+var port = process.env.PORT || 5000;
 //db config
 mongoose.connect('mongodb://josh22:josh22@ds145892.mlab.com:45892/heroku_8hl5wfnv');
 app.use(cors());
