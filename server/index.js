@@ -12,8 +12,8 @@ var router = express.Router();
 
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 //set our port to either a predetermined port number if you have set 
-//it up, or 3001
-var port = process.env.PORT || 5000;
+//it up, or 3899
+var port = process.env.PORT || 3899;
 //db config
 mongoose.connect('mongodb://josh22:josh22@ds145892.mlab.com:45892/heroku_8hl5wfnv');
 app.use(cors());
@@ -50,8 +50,8 @@ router.route('/appointments')
  })
  //post new appointment to the database
  .post(function(req, res) {
- var appointment = new Appointment();
- //body parser lets us use the req.body
+  var appointment = new Appointment();
+  //body parser lets us use the req.body
   appointment.appointmentTitle = req.body.appointmentTitle;
   appointment.appointmentDate = req.body.appointmentDate;
   appointment.appointmentTime = req.body.appointmentTime;
@@ -59,11 +59,14 @@ router.route('/appointments')
   appointment.appointmentDestination = req.body.appointmentDestination;
   appointment.appointmentOrigin = req.body.appointmentOrigin;
   appointment.travelMode = req.body.travelMode;
-appointment.save(function(err) {
- if (err)
- res.send(err);
- res.json({ message: 'Appointment successfully added!' });
- });
+  appointment.save(function(err) {
+  if (err) {
+    res.send(err);
+    res.json({ message: 'Appointment successfully added!' });
+  } else {
+    console.log('Great Success!')
+  }
+  });
  });
 //Use our router configuration when we call /api
 //...

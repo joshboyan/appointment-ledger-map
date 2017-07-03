@@ -24,6 +24,8 @@ class App extends Component {
         appointments: res.data,
         filteredAppointments: res.data
        });
+    }).catch(err => {
+      console.log(err);
     })
   }
   componentDidMount () {
