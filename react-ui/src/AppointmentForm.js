@@ -70,13 +70,18 @@ class AppointmentForm extends Component {
   }
 
   handleDescriptionChange(e) {
-    let safeDescription = this.makeStringSafe(e.target.value)
+    let safeDescription = this.makeStringSafe(e.target.value);
     this.setState({
       appointmentDescription: safeDescription
     });
   }
   handleOriginChange(address) {
-    let safeAddress = this.makeStringSafe(address);
+    let safeAddress
+    if(typeof address === 'string') {
+    safeAddress = this.makeStringSafe(address);
+  } else {
+    safeAddress = address 
+  }
     this.setState({
       appointmentOrigin: safeAddress
     });

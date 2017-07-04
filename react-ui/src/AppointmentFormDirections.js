@@ -21,7 +21,7 @@ class AppointmentFormDirections extends Component {
 
       function success(pos) {
         const position = pos.coords;
-        that.props.handleOriginChange(new google.maps.LatLng(position.latitude, position.longitude))
+        that.props.handleOriginChange(new google.maps.LatLng(position.latitude, position.longitude));
       };
 
       function error(err) {
