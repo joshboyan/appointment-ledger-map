@@ -1,6 +1,9 @@
 //first we import our dependencies…
 var express = require('express');
 var path = require('path');
+var react = require('react');
+var ReactDOMServer = require('react-dom/server');
+var render = require('./render');
 var mongoose = require('mongoose');
 var cors = require('cors');
 var bodyParser = require('body-parser');
@@ -24,7 +27,11 @@ app.use(bodyParser.json());
 
 //now we can set the route path & initialize the API
 router.get('/', function(req, res) {
- res.json({ message: 'API Initialized!'});
+  var appString = ReactDOMServer.renderToString('<App />');
+  res.send(render, { 
+    title: 'Hello World!',
+    body: appString
+  });
 });
 // All remaining requests return the React app, so it can handle routing.
 //app.get('*', function(request, response) {
