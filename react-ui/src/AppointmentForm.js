@@ -45,7 +45,6 @@ class AppointmentForm extends Component {
   }
   handleTitleChange(e) {
     let safeTitle = this.makeStringSafe(e.target.value);
-    console.log(safeTitle);
     this.setState({
       appointmentTitle: safeTitle
     });
