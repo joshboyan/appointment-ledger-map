@@ -6,8 +6,7 @@
   },
   "scripts": {
     "start": "node server",
-    "start-dev": "nodemon server",
-    "heroku-postbuild": "cd react-ui/ && npm install --only=dev && NODE_ENV=development npm install --no-shrinkwrap && npm run build"
+    "start-dev": "nodemon server"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
