@@ -41,7 +41,7 @@ class App extends Component {
     this.setState({
       appointments: newAppointmentList,
       filteredAppointments: newAppointmentList      
-    }); 
+    });     
     axios.post('/api/appointments', {
       appointmentTitle: newAppointment.appointmentTitle,
       appointmentDate: newAppointment.appointmentDate,

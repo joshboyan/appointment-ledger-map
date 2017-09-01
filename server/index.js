@@ -34,13 +34,13 @@ router.get('/api', function(req, res) {
   //response.sendFile(path.resolve(__dirname, '../react-ui/build/', 'index.html'));
 //});
 //Use our router configuration when we call /api
-app.use('/', router);
+app.use('/api', router);
 //starts the server and listens for requests
 app.listen(port, function() {
  console.log('api running on port' + port);
 });
 //adding the /appointments route to our /api router
-router.route('/api/appointments')
+router.route('/appointments')
  //retrieve all appointments from the database
  .get(function(req, res) {
  //looks at our Appointment Schema
@@ -68,5 +68,3 @@ router.route('/api/appointments')
     res.json({ message: 'Appointment successfully added!' });
   });
  });
-//Use our router configuration when we call /api
-//...
