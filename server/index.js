@@ -29,10 +29,6 @@ app.use(bodyParser.json());
 router.get('/api', function(req, res) {
   res.send('Hello World!');
 });
-// All remaining requests return the React app, so it can handle routing.
-//app.get('*', function(request, response) {
-  //response.sendFile(path.resolve(__dirname, '../react-ui/build/', 'index.html'));
-//});
 //Use our router configuration when we call /api
 app.use('/api', router);
 //starts the server and listens for requests
@@ -68,3 +64,7 @@ router.route('/appointments')
     res.json({ message: 'Appointment successfully added!' });
   });
  });
+ // All remaining requests return the React app, so it can handle routing.
+//app.get('*', function(request, response) {
+  //response.sendFile(path.resolve(__dirname, '../react-ui/build/', 'index.html'));
+//});
