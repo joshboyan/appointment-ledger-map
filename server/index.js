@@ -26,13 +26,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //now we can set the route path & initialize the API
-router.get('/', function(req, res) {
+router.get('/api', function(req, res) {
   res.send('Hello World!');
 });
 // All remaining requests return the React app, so it can handle routing.
-//app.get('*', function(request, response) {
-//  response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
-//});
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+});
 //Use our router configuration when we call /api
 app.use('/', router);
 //starts the server and listens for requests
@@ -40,7 +40,7 @@ app.listen(port, function() {
  console.log('api running on port' + port);
 });
 //adding the /appointments route to our /api router
-router.route('/appointments')
+router.route('/api/appointments')
  //retrieve all appointments from the database
  .get(function(req, res) {
  //looks at our Appointment Schema
