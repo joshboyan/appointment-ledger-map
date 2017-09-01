@@ -27,11 +27,7 @@ app.use(bodyParser.json());
 
 //now we can set the route path & initialize the API
 router.get('/', function(req, res) {
-  var appString = ReactDOMServer.renderToString('<App />');
-  res.send(render, { 
-    title: 'Hello World!',
-    body: appString
-  });
+  res.send('Hello World!');
 });
 // All remaining requests return the React app, so it can handle routing.
 //app.get('*', function(request, response) {
