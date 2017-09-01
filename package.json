@@ -1,6 +1,7 @@
 {
   "name": "appointment-ledger-map",
   "version": "0.1.1",
+  "homepage": "https://appointment-ledger-map.herokuapp.com/",
   "engines": {
     "node": "6.9.x"
   },
