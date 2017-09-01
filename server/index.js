@@ -40,7 +40,7 @@ app.listen(port, function() {
  console.log('api running on port' + port);
 });
 //adding the /appointments route to our /api router
-router.route('/api/appointments')
+router.route('/appointments')
  //retrieve all appointments from the database
  .get(function(req, res) {
  //looks at our Appointment Schema
