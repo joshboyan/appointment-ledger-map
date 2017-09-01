@@ -31,7 +31,7 @@ router.get('/api', function(req, res) {
 });
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
-  response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+  response.sendFile(path.resolve(__dirname, '../react-ui/build/', 'index.html'));
 });
 //Use our router configuration when we call /api
 app.use('/', router);
