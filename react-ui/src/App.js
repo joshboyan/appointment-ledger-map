@@ -17,7 +17,7 @@ class App extends Component {
     this.filterAppoinments = this.filterAppoinments.bind(this);
   }
   loadAppointments() {
-    axios.get('/appointments')
+    axios.get('/api/appointments')
     .then(response => {
       console.log(response.data)
       this.setState({ 
@@ -42,7 +42,7 @@ class App extends Component {
       appointments: newAppointmentList,
       filteredAppointments: newAppointmentList      
     }); 
-    axios.post('/appointments', {
+    axios.post('/api/appointments', {
       appointmentTitle: newAppointment.appointmentTitle,
       appointmentDate: newAppointment.appointmentDate,
       appointmentTime: newAppointment.appointmentTime,
