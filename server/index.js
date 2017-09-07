@@ -1,4 +1,5 @@
 //first we import our dependencies…
+var config = require('../config');
 var express = require('express');
 var path = require('path');
 var react = require('react');
@@ -14,11 +15,11 @@ var app = express();
 var router = express.Router();
 
 app.use(express.static(path.resolve(__dirname, '../react-ui/build/')));
-//set our port to either a predetermined port number if you have set 
-//it up, or 3899
-var port = process.env.PORT || 3899;
+
 //db config
-mongoose.connect('mongodb://josh11:josh11@ds133162.mlab.com:33162/heroku_tl016m5d');
+mongoose.connect(config.dbURI, {
+  useMongoClient: true,
+});
 app.use(cors());
 //now we should configure the API to use bodyParser and look for 
 //JSON data in the request body
@@ -31,10 +32,7 @@ router.get('/api', function(req, res) {
 });
 //Use our router configuration when we call /api
 app.use('/api', router);
-//starts the server and listens for requests
-app.listen(port, function() {
- console.log('api running on port' + port);
-});
+
 //adding the /appointments route to our /api router
 router.route('/appointments')
  //retrieve all appointments from the database
@@ -68,3 +66,8 @@ router.route('/appointments')
 //app.get('*', function(request, response) {
   //response.sendFile(path.resolve(__dirname, '../react-ui/build/', 'index.html'));
 //});
+
+//starts the server and listens for requests
+app.listen(config.port, function() {
+ console.log('api running on port ' + config.port);
+});
