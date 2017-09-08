@@ -1,9 +1,16 @@
 /*global google*/
+/**
+ * This componet generates a google map with the starting/ ending 
+ * points and the travel path for the appointment commute. 
+ * https://github.com/tomchentw/react-google-maps/tree/master/src/lib
+ * After that, * it displays the directions step by step.
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withGoogleMap, GoogleMap, DirectionsRenderer } from 'react-google-maps';
 import { Button, Panel } from 'react-bootstrap';
 
+// Google maps instance
 const DirectionsExampleGoogleMap = withGoogleMap(props => (
   <GoogleMap>
     {props.directions && <DirectionsRenderer directions={props.directions} />}
@@ -32,10 +39,13 @@ class AppointmentMap extends Component {
     }
     this.duration = this.duration.bind(this);
   }
+
   duration(duration) {
-    this.props.getDuration(duration)
-    console.log('the duration of this trip is', duration);
+    this.props.getDuration(duration);
   }
+
+  // Call the map with our origin and destination and get all the
+  // ancillary trip info
   componentDidMount() {
     const DirectionsService = new google.maps.DirectionsService();
     DirectionsService.route({
@@ -67,6 +77,7 @@ class AppointmentMap extends Component {
       }
     });
   }
+
   render() {
     return (
       <div>

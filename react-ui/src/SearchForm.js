@@ -1,3 +1,7 @@
+/**
+ * This is the "Search Appointments" and filter which appointments
+ * are displayed based on user inputs
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel,
@@ -14,6 +18,8 @@ class SearchForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  // Changes the color of the form based on how many entries are 
+  // left after the filter is applied
   getValidationState() {
     const length = this.props.filteredAppointments.length;
     if (length > 1) return 'success';

@@ -1,3 +1,7 @@
+/**
+ * This file contains the markup for the user to choose notification times
+ * (not yet implemented)
+ */
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Panel, FormGroup, Checkbox } from 'react-bootstrap';

@@ -1,3 +1,8 @@
+/**
+ * This file contains the component the autocompletes the location 
+ * inputs based on the Google places API
+ * https://github.com/kenny-hibino/react-places-autocomplete
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PlacesAutocomplete from 'react-places-autocomplete';

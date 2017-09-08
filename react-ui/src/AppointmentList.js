@@ -1,3 +1,6 @@
+/**
+ * This component generates the list of appointments 
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Appointment from './Appointment';

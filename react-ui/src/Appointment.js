@@ -1,3 +1,7 @@
+/**
+ * This component is genreated once per appointment in App state to 
+ * provide a UI for all the details 
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
@@ -13,6 +17,8 @@ class Appointment extends Component {
     }
     this.getDuration = this.getDuration.bind(this);
   } 
+
+  // Find how long the commute is and calculate what time the user must depart
   getDuration(duration) {
     let dateTime = this.props.appointmentData.appointmentTime + ' ' + this.props.appointmentData.appointmentDate;
     let format = parseFormat(dateTime);

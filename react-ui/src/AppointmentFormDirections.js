@@ -1,4 +1,12 @@
 /* global google*/
+/**
+ * This is the part of the form labeled "Directions". It contains
+ * code to use the Geolocation browser API 
+ * (https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation)
+ *  and Google's geolocation service
+ * (https://developers.google.com/maps/documentation/geolocation/intro)
+ *  to store it in a form that can be used to generate a map.
+ */
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Panel, FormGroup, ControlLabel, Radio, Button } from 'react-bootstrap';

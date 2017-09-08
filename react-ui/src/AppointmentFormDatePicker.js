@@ -1,3 +1,6 @@
+/**
+ * Date picker component: https://hacker0x01.github.io/react-datepicker/
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';

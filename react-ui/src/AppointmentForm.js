@@ -1,3 +1,8 @@
+/**
+ * This is the main file for the Add Appointmet form. All the information
+ * for an appointment being create is stored in state in this component 
+ * until the appointment is submitted and it is sent to APp.js 
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Panel, FormGroup, ControlLabel,
@@ -38,11 +43,15 @@ class AppointmentForm extends Component {
     this.handleTravelModeChange = this.handleTravelModeChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  // Sanitize inputs
   makeStringSafe(str) {
     if(typeof str === 'string'){
     return str.replace('<', '').replace('>','').replace('?','').replace('/','');
     }
   }
+
+  // Add any changes to the form to this components state
   handleTitleChange(e) {
     let safeTitle = this.makeStringSafe(e.target.value);
     this.setState({
@@ -75,6 +84,7 @@ class AppointmentForm extends Component {
       appointmentDescription: safeDescription
     });
   }
+
   handleOriginChange(address) {
     let safeAddress;
     if(typeof address === 'string') {
@@ -86,6 +96,7 @@ class AppointmentForm extends Component {
       appointmentOrigin: safeAddress
     });
   }
+
   handleTravelModeChange(mode) {
     this.setState({
       travelMode: mode
@@ -93,6 +104,8 @@ class AppointmentForm extends Component {
       console.log(this.state.travelMode);
     });
   }
+
+  // Send the newly created appointment to App.js
   handleSubmit(e) {
     let newAppointment = {
       appointmentTitle: this.state.appointmentTitle,

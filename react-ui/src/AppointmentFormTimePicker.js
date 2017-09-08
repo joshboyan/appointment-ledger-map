@@ -1,3 +1,8 @@
+/**
+ * This is a react component that lets the user choose an
+ * appointment time.
+ * https://github.com/react-component/time-picker
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
