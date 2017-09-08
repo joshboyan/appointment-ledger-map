@@ -16,7 +16,7 @@ class Appointment extends Component {
   getDuration(duration) {
     let dateTime = this.props.appointmentData.appointmentTime + ' ' + this.props.appointmentData.appointmentDate;
     let format = parseFormat(dateTime);
-    let arrival = moment(dateTime, format).subtract({seconds: duration}).format(' h:mm a dddd MMMM D, YYYY');
+    let arrival = moment(dateTime, format).subtract({'hours': 12, 'seconds': duration}).format(' HH:mm a dddd MMMM D, YYYY');
     this.setState({
       duration,
       arrival

@@ -34,11 +34,15 @@ class AppointmentMap extends Component {
   }
   duration(duration) {
     this.props.getDuration(duration)
+    console.log('the duration of this trip is', duration);
   }
   componentDidMount() {
     const DirectionsService = new google.maps.DirectionsService();
     DirectionsService.route({
-      origin: this.state.origin,
+      // If the origin was obtained with Geolocation change it back to useable form
+      origin: this.state.origin.includes('{') ?
+        JSON.parse(this.state.origin) : 
+        this.state.origin,
       destination: this.state.destination,
       travelMode: this.props.travelMode,
     }, (result, status) => {
@@ -55,6 +59,7 @@ class AppointmentMap extends Component {
           duration: result.routes[0].legs[0].duration.value,
           durationText: result.routes[0].legs[0].duration.text,
         }, function() {
+          console.log('duration in map', this.state.duration)
           this.duration(this.state.duration);
         });
       } else {

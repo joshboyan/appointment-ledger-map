@@ -76,11 +76,11 @@ class AppointmentForm extends Component {
     });
   }
   handleOriginChange(address) {
-    let safeAddress
+    let safeAddress;
     if(typeof address === 'string') {
     safeAddress = this.makeStringSafe(address);
   } else {
-    safeAddress = address 
+    safeAddress = JSON.stringify(address);
   }
     this.setState({
       appointmentOrigin: safeAddress
