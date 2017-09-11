@@ -12,7 +12,7 @@ The app is styled with Bootstrap and features include:
 - directions to the appointment 
 - editable appointment listings
 
-To accomplish this I integrate Google maps and services React components as well as the geolocation browser API and momentjs to manipulate times. The app speeds up subsequent visits and offers offline functionality using the service-worker web API and IndexedDB for local storage. 
+To accomplish this I integrate Google maps and services React components as well as the geolocation browser API and momentjs to manipulate times. The app speeds up subsequent visits and offers offline functionality using the service-worker web API and IndexedDB for local storage. The MongoDB API is built with RESTful architecture.
 
 Unit tests are written using the Jest framework and Travis CI for continuous integration to Heroku. User activites are tracked using Google analytics events. Accessiblity audits were completed using SiteImprove and overall audits using Lighthouse.
 

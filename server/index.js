@@ -35,18 +35,18 @@ app.use('/api', router);
 
 //adding the /appointments route to our /api router
 router.route('/appointments')
- //retrieve all appointments from the database
- .get(function(req, res) {
- //looks at our Appointment Schema
- Appointment.find(function(err, appointments) {
- if (err)
- res.send(err);
- //responds with a json object of our database appointments.
- res.json(appointments)
- });
- })
- //post new appointment to the database
- .post(function(req, res) {
+  //retrieve all appointments from the database
+  .get(function(req, res) {
+  //looks at our Appointment Schema
+  Appointment.find(function(err, appointments) {
+  if (err)
+  res.send(err);
+  //responds with a json object of our database appointments.
+  res.json(appointments)
+  });
+  })
+  //post new appointment to the database
+  .post(function(req, res) {
   var appointment = new Appointment();
   //body parser lets us use the req.body
   appointment.appointmentTitle = req.body.appointmentTitle;
@@ -61,7 +61,7 @@ router.route('/appointments')
     res.send(err);
     res.json({ message: 'Appointment successfully added!' });
   });
- });
+});
  // All remaining requests return the React app, so it can handle routing.
 //app.get('*', function(request, response) {
   //response.sendFile(path.resolve(__dirname, '../react-ui/build/', 'index.html'));
